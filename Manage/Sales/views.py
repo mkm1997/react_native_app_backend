@@ -6,6 +6,7 @@ from django.shortcuts import render,HttpResponse,HttpResponseRedirect
 
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.authtoken.models import Token
+from rest_framework.decorators import api_view
 
 from .models import Account,Manager,Outlets
 import json
@@ -262,6 +263,7 @@ def imageUpload(request):
 
 
 @csrf_exempt
+@api_view(["GET"])
 def managerView(request):
     if request.user.is_authenticated:
         print(request.user.is_authenticated)
