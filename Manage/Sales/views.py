@@ -260,7 +260,8 @@ def imageUpload(request):
 @csrf_exempt
 def managerView(request):
     if request.user.is_authenticated:
-        print(request.auth.user.username)
+        print(request.user.is_authenticated)
+        print(request.user)
         if request.method == "GET":
 
             li = []
