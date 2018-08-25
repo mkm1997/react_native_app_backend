@@ -274,7 +274,7 @@ def managerView(request):
 
             for i in Manager.objects.all():
                 print(i.outlet.name)
-                image_url = "http://192.168.43.12:8000/media/"+str(i.image)
+                image_url = "techinvent.pythonanywhere.com/media/"+str(i.image)
                 di = {"id":i.id,"image":image_url,"outlet":i.outlet.name,"salesman":i.outlet.user.name}
                 li.append(di)
 
