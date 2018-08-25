@@ -5,6 +5,8 @@ from django.contrib.auth.models import User
 from django.shortcuts import render,HttpResponse,HttpResponseRedirect
 
 from django.views.decorators.csrf import csrf_exempt
+from rest_framework.authtoken.models import Token
+
 from .models import Account,Manager,Outlets
 import json
 import csv
@@ -91,8 +93,10 @@ def LoginView(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
+
                 data = {"status": "success",
-                        "message":"login successfully"
+                        "message":"login successfully",
+                        "token":Token.objects.get(user=user).key
                         }
                 return HttpResponse(json.dumps(data),content_type="text/javascript")
                 # Redirect to a success page.
